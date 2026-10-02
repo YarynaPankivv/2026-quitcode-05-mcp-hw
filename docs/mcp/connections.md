@@ -34,7 +34,7 @@
 
 | Крок | Увімкнено в `/mcp` | Сервер із правом запису в цій сесії |
 |---|---|---|
-| Вхід (OAuth) | `supabase`, `vercel`, `playwright` — агенту нічого не писали | — |
+| Вхід (OAuth) | `supabase`, `vercel`, `playwright` підняті лише для `/mcp` → Authenticate; агенту нічого не писали, жодного інструмента не викликано; після входу — `/exit`. Далі в робочих сесіях — по одному серверу | — (жодного виклику) |
 | Міграція й сид | `supabase` | `supabase` |
 | Лог білду | `vercel` | —, записуючі інструменти під deny |
 | Перевірка форми в браузері | `playwright` | `playwright` (браузер); Supabase вимкнено |
@@ -55,6 +55,7 @@ Supabase разом із браузерним.
   playwright, які тобі зараз доступні. Нічого не викликай.» (для «після» — додатково «лише назви, по
   одній на рядок»)
 - `docs/mcp/evidence/mcp-before.txt`: 25 інструментів
-- `docs/mcp/evidence/mcp-after.txt`: 21 інструмент; зникли: `browser_run_code_unsafe`,
+- `docs/mcp/evidence/mcp-after.txt`: 21 інструмент (агент вивів імена з префіксом `mcp__playwright__`;
+  префікс прибрано, щоб формат збігався з «до» і diff показував лише зміни); зникли: `browser_run_code_unsafe`,
   `browser_file_upload`, `browser_drop`, `browser_evaluate` (`webmcp_*` не було й у «до» — їх вимикає
   `--no-webmcp`; deny на них — другий рубіж)

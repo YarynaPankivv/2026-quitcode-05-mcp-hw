@@ -47,7 +47,7 @@ npx -y @modelcontextprotocol/inspector@2.8.0 --cli node mcp/leaddesk-server/src/
 Скоуп `local` (за замовчуванням) — лише ви й лише цей проєкт:
 
 ```bash
-claude mcp add leaddesk -- node "$(pwd)/mcp/leaddesk-server/src/server.mjs"
+claude mcp add leaddesk -- node "$(pwd -W)/mcp/leaddesk-server/src/server.mjs"   # Git Bash; macOS/Linux — $(pwd)
 ```
 
 `leaddesk_set_lead_status` змінює дані — схвалюйте кожен виклик вручну.
