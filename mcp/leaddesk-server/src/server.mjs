@@ -8,7 +8,7 @@
 import { McpServer } from "@modelcontextprotocol/server";
 import { serveStdio } from "@modelcontextprotocol/server/stdio";
 import { readFile } from "node:fs/promises";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { z } from "zod";
 
 const FIXTURE = process.env.LEADDESK_FIXTURE ?? fileURLToPath(new URL("../fixtures/leads.json", import.meta.url));
@@ -43,7 +43,7 @@ const STATUSES_MD = `# Статуси лідів LeadDesk
 статусу. Повернути лід із \`lost\` у роботу можна, якщо клієнт сам вийшов на зв'язок, — тоді \`contacted\`.
 `;
 
-const factory = () => {
+export const factory = () => {
   const server = new McpServer({ name: "leaddesk", version: "0.1.0" });
 
   server.registerTool(
@@ -121,4 +121,5 @@ const factory = () => {
   return server;
 };
 
-await serveStdio(factory);
+// stdio only when run directly; src/http.mjs imports the same factory.
+if (import.meta.url === pathToFileURL(process.argv[1]).href) await serveStdio(factory);

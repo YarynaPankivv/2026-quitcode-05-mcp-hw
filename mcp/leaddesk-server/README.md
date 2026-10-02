@@ -19,6 +19,12 @@ npm ci
 node src/server.mjs        # stdio; журнал — лише в stderr
 ```
 
+HTTP-режим (Task E1) — та сама фабрика, лише `127.0.0.1:3333/mcp`, з перевіркою `Host` і `Origin`:
+
+```bash
+node src/http.mjs
+```
+
 Змінна оточення (необов'язкова): `LEADDESK_FIXTURE` — шлях до іншого файлу з лідами. Без неї —
 `fixtures/leads.json` поруч із модулем, незалежно від поточної теки.
 
