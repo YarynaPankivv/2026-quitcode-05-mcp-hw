@@ -51,12 +51,18 @@ leadId: "lead_0003"
 status: "lost"
 reason: "Клієнт відмовився: обрали іншу агенцію"
 About the leaddesk – Leaddesk Set Lead Status Tool:
-  ЗМІНЮЄ ДАНІ: переводить лід LeadDesk у новий статус і пише запис в аудит. …
+  ЗМІНЮЄ ДАНІ: переводить лід LeadDesk у новий статус і пише запис в аудит. Перед викликом обов'язково
+  отримай підтвердження людини: назви id ліда, поточний і новий статус та причину. Значення статусів — у
+  ресурсі leaddesk://reference/statuses. id ліда знаходь через leaddesk_find_leads.
 Do you want to proceed?
 ❯ 1. Yes
   2. Yes, and don't ask again for leaddesk – Leaddesk Set Lead Status commands in C:\Homework\Homework 5\leaddesk-ab-b
   3. No
 ```
+
+Примітка: у першій версії цього файла «About» апруву `leaddesk_set_lead_status` на запиті 6 було
+скорочено до «…» при копіюванні. На екрані опис повний — той самий текст, що й на апруві запиту 5
+(це опис інструмента з `tools/list`, він однаковий для кожного виклику).
 
 ## Транскрипт (дослівно з термінала)
 

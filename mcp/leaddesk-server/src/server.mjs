@@ -51,7 +51,7 @@ export const factory = () => {
     {
       title: "Знайти ліди",
       description:
-        "Повертає ліди LeadDesk за статусом, найновіші першими: id, компанія, статус, джерело, бюджет і дата заявки. Застосовуй, щоб показати, хто в роботі, або знайти id ліда перед зміною статусу. Тільки читає.",
+        "Повертає ліди LeadDesk за статусом, найновіші першими: id, компанія, статус, джерело, бюджет і дата заявки. Застосовуй, щоб показати, хто в роботі, або знайти id ліда перед зміною статусу. Що означає кожен статус для команди — у ресурсі leaddesk://reference/statuses. Тільки читає.",
       inputSchema: {
         status: z
           .enum([...LEAD_STATUSES, "any"])
@@ -99,7 +99,7 @@ export const factory = () => {
       lead.status = status;
       const entry = { action: "lead.status_changed", leadId, at: new Date().toISOString(), from, to: status, reason };
       audit.push(entry);
-      console.error(`leaddesk: ${leadId} ${from} -> ${status}`);
+      console.error(`leaddesk: status changed ${from} -> ${status}`);
       return {
         content: [{ type: "text", text: `Статус ${leadId} змінено: ${from} → ${status}. Запис аудиту: ${entry.action} о ${entry.at}.` }],
         structuredContent: { lead: publicLead(lead), audit: entry },
